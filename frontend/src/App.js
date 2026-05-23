@@ -3,6 +3,7 @@ import "@/App.css";
 import Sphere from "@/components/Sphere";
 import DreamMap from "@/components/DreamMap";
 import { SigilQuadrature, SigilOuroboros, KeyGlyph, FooterSeal } from "@/components/Sigils";
+import FractalDots from "@/components/FractalDots";
 
 const APP_URL = "https://app.innercore.art";
 const TG_URL = "https://t.me/post_cybercore";
@@ -102,14 +103,19 @@ const Hero = () => (
 );
 
 const WhatItIs = () => (
-  <section id="what" className="container-ms py-20 md:py-28 fade-in" data-testid="section-what">
-    <div className="max-w-[760px]">
-      <div className="text-[11px] tracking-[0.32em] uppercase mb-6" style={{ color: "var(--copper)" }}>
-        — i. prima materia
+  <section id="what" className="relative overflow-hidden fade-in" data-testid="section-what">
+    <div className="absolute inset-0 pointer-events-none" data-testid="fractal-bg-what">
+      <FractalDots variant="copper" density={60} opacity={0.9} />
+    </div>
+    <div className="container-ms relative py-20 md:py-28 z-[2]">
+      <div className="max-w-[760px]">
+        <div className="text-[11px] tracking-[0.32em] uppercase mb-6" style={{ color: "var(--copper)" }}>
+          — i. prima materia
+        </div>
+        <p className="font-serif text-[26px] sm:text-[32px] md:text-[36px] leading-[1.3]" style={{ color: "var(--cream)" }}>
+          Записывай сны простым языком. innerCore раскладывает их на <span style={{ color: "var(--copper)" }}>архетипы</span>, символы и связи с другими твоими снами. Со временем складывается карта — твоё личное бессознательное в форме.
+        </p>
       </div>
-      <p className="font-serif text-[26px] sm:text-[32px] md:text-[36px] leading-[1.3]" style={{ color: "var(--cream)" }}>
-        Записывай сны простым языком. innerCore раскладывает их на <span style={{ color: "var(--copper)" }}>архетипы</span>, символы и связи с другими твоими снами. Со временем складывается карта — твоё личное бессознательное в форме.
-      </p>
     </div>
   </section>
 );
@@ -189,23 +195,28 @@ const MapSection = () => (
 );
 
 const Privacy = () => (
-  <section id="privacy" className="container-ms py-20 md:py-28 fade-in" data-testid="section-privacy">
-    <div className="grid md:grid-cols-12 gap-10 items-start max-w-[1000px] mx-auto">
-      <div className="md:col-span-3 flex md:justify-end">
-        <div style={{ color: "var(--copper)" }}>
-          <KeyGlyph size={64} />
+  <section id="privacy" className="relative overflow-hidden fade-in" data-testid="section-privacy">
+    <div className="absolute inset-0 pointer-events-none" data-testid="fractal-bg-privacy">
+      <FractalDots variant="cinnabar" density={64} opacity={0.85} />
+    </div>
+    <div className="container-ms relative py-20 md:py-28 z-[2]">
+      <div className="grid md:grid-cols-12 gap-10 items-start max-w-[1000px] mx-auto">
+        <div className="md:col-span-3 flex md:justify-end">
+          <div style={{ color: "var(--copper)" }}>
+            <KeyGlyph size={64} />
+          </div>
         </div>
-      </div>
-      <div className="md:col-span-9">
-        <div className="text-[11px] tracking-[0.32em] uppercase mb-5" style={{ color: "var(--copper)" }}>
-          — iv. sigillum
+        <div className="md:col-span-9">
+          <div className="text-[11px] tracking-[0.32em] uppercase mb-5" style={{ color: "var(--copper)" }}>
+            — iv. sigillum
+          </div>
+          <h2 className="font-serif text-[30px] sm:text-[38px] md:text-[44px] leading-[1.06] mb-6">
+            Сны не покидают тебя.
+          </h2>
+          <p className="text-[17px] max-w-[620px]" style={{ color: "var(--cream-dim)" }}>
+            Содержимое снов шифруется на твоём устройстве перед отправкой. На сервере — только шифротекст. Ни Google, ни мы, никто другой не видит, что тебе снилось.
+          </p>
         </div>
-        <h2 className="font-serif text-[30px] sm:text-[38px] md:text-[44px] leading-[1.06] mb-6">
-          Сны не покидают тебя.
-        </h2>
-        <p className="text-[17px] max-w-[620px]" style={{ color: "var(--cream-dim)" }}>
-          Содержимое снов шифруется на твоём устройстве перед отправкой. На сервере — только шифротекст. Ни Google, ни мы, никто другой не видит, что тебе снилось.
-        </p>
       </div>
     </div>
   </section>
