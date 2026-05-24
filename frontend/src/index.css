@@ -117,6 +117,10 @@ html, body {
     color: var(--copper-bright);
     border-color: var(--copper);
 }
+.nav-cta-desktop { display: none; }
+@media (min-width: 768px) {
+    .nav-cta-desktop { display: inline-flex; }
+}
 
 /* Fade-in on scroll */
 .fade-in {
@@ -233,6 +237,14 @@ details > summary::-webkit-details-marker { display: none; }
     max-width: 1180px;
     margin: 0 auto;
     padding: 0 1.5rem;
+}
+
+/* Sticky header */
+.nav-scrolled {
+    background: rgba(15, 17, 24, 0.78);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    border-bottom: 1px solid var(--hairline);
 }
 
 /* Reduced motion */

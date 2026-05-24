@@ -1,0 +1,41 @@
+{
+  "summary": "Iteration 3 frontend testing (innerCore landing): sticky header, mobile hamburger menu, min-h-screen sections, and FractalTrees canvas. 34/35 checks passed across desktop (1440px) and mobile (390px). All previous iteration-1 tests still pass.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "tests_executed": {
+    "sticky_header": "PASS - position:fixed, top:0px",
+    "nav_scrolled_blur_class": "PASS - .nav-scrolled added after scrollY > 24",
+    "desktop_nav_links_visible": "PASS - nav-what/how/map/privacy + nav-cta all visible on 1440px",
+    "desktop_mobile_toggle_hidden": "PASS - hamburger hidden via md:hidden",
+    "mobile_hamburger_visible_390": "PASS",
+    "mobile_inline_nav_hidden": "PASS - nav-what & nav-cta (ghost) hidden on mobile",
+    "mobile_menu_open": "PASS - all 5 items (m-nav-what/how/map/privacy + mobile-cta) visible after toggle",
+    "mobile_menu_link_navigates": "PASS - scrollY=2544 after clicking m-nav-map (close handler fires, scroll to section works)",
+    "mobile_menu_closes_after_click": "FUNCTIONAL_PASS (test assertion noted) - menu visually collapses but element still in DOM with opacity-0/max-h-0 so is_visible returns true; verified via screenshot that menu is closed",
+    "min_h_screen_all_sections": "PASS - hero, what, how, map, privacy, deep, final all == viewport height on both desktop (900px) and mobile (844px)",
+    "fractal_trees_canvas": "PASS - canvas present in section-final-cta with correct dimensions and rendering trees (visible copper branches in screenshot)",
+    "hero_cta_href": "PASS - https://app.innercore.art",
+    "dream_map_demo": "PASS - visible",
+    "deep_collapsible": "PASS - opens on click",
+    "telegram_links": "PASS - https://t.me/post_cybercore",
+    "footer": "PASS",
+    "console_errors": "PASS - zero console errors during scroll/menu interactions"
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Minor: FractalTrees.jsx uses ResizeObserver + IntersectionObserver — both properly disconnected in cleanup. Good.",
+    "Minor: Nav scroll listener is passive and removed on unmount. Good.",
+    "Nit: container-ms padding (1.5rem) gives ample tap area for hamburger on 390px viewport. OK."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (skipped per request)", "frontend": "100% functional (34/35 raw assertions; 1 is a test-selector artifact, not a real bug)"},
+  "seed_data_creation": "None",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Pure static landing. URL https://dream-map-2.preview.emergentagent.com. All new iteration-3 features verified: sticky fixed header with backdrop-blur on scroll, min-h-screen on all 7 sections, mobile hamburger menu with m-prefixed testids, FractalTrees canvas in Final CTA. No backend. Zero console errors."
+}
