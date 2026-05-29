@@ -354,7 +354,7 @@ const MapAndPrivacy = () => (
         </div>
       </div>
 
-      <div className="mt-20 md:mt-28 grid md:grid-cols-12 gap-8 md:gap-12 items-start max-w-[1100px]" data-testid="block-privacy">
+      <div id="sigillum" className="mt-20 md:mt-28 grid md:grid-cols-12 gap-8 md:gap-12 items-start max-w-[1100px]" data-testid="block-privacy">
         <div className="md:col-span-3 flex md:justify-end">
           <div style={{ color: "var(--copper)" }}>
             <KeyGlyph size={60} />
@@ -585,7 +585,7 @@ const Footer = () => (
         <a href="mailto:hi@innercore.art" className="hover:text-[color:var(--cream)]" style={{ color: "inherit", textDecoration: "none" }} data-testid="footer-contact">
           контакт
         </a>
-        <a href="#map" className="hover:text-[color:var(--cream)]" style={{ color: "inherit", textDecoration: "none" }} data-testid="footer-privacy">
+        <a href="#sigillum" className="hover:text-[color:var(--cream)]" style={{ color: "inherit", textDecoration: "none" }} data-testid="footer-privacy">
           политика приватности
         </a>
         <a href={TG_URL} target="_blank" rel="noreferrer" className="hover:text-[color:var(--cream)]" style={{ color: "inherit", textDecoration: "none" }} data-testid="footer-telegram">
