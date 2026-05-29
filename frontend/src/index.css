@@ -32,6 +32,11 @@ html, body {
     text-rendering: optimizeLegibility;
 }
 
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
 ::selection {
     background: var(--copper);
     color: var(--ink);
@@ -204,6 +209,14 @@ details > summary {
     cursor: pointer;
 }
 details > summary::-webkit-details-marker { display: none; }
+
+/* FAQ */
+.faq-item[open] .faq-plus {
+    transform: rotate(45deg);
+}
+.faq-item > summary:hover h3 {
+    color: var(--copper-bright);
+}
 
 /* Drop cap accent */
 .drop-cap::first-letter {
