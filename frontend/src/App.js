@@ -271,7 +271,7 @@ const Manifesto = () => {
   return (
     <Section id="manifest" bg="ink-soft" className="fade-in" testid="section-manifest">
       <div className="absolute inset-0 pointer-events-none" data-testid="fractal-bg-manifest">
-        <FractalDots variant="copper" density={62} opacity={0.85} />
+        <FractalDots variant="copper" density={110} opacity={1} />
       </div>
       <div className="container-ms relative w-full py-24 md:py-32 z-[2]">
         <div className="mb-14 md:mb-20 max-w-[820px]">
@@ -298,7 +298,10 @@ const Tool = () => {
   const { t } = useLang();
   return (
     <Section id="how" bg="ink" className="flex items-center fade-in" testid="section-how">
-      <div className="container-ms w-full py-24 md:py-32">
+      <div className="absolute inset-0 pointer-events-none" data-testid="fractal-trees-bg-how">
+        <FractalTrees />
+      </div>
+      <div className="container-ms relative w-full py-24 md:py-32 z-[2]">
         <div className="flex items-baseline justify-between mb-12 md:mb-16 flex-wrap gap-4">
           <div>
             <div className="text-[10px] md:text-[11px] tracking-[0.32em] uppercase mb-4" style={{ color: "var(--copper)" }}>
@@ -315,7 +318,7 @@ const Tool = () => {
 
         <div className="grid md:grid-cols-3 gap-px" style={{ background: "var(--hairline)" }}>
           {t.tool.cards.map((c, i) => (
-            <div key={i} className="card-ms" data-testid={`how-card-${i}`} style={{ borderRadius: 0, borderWidth: 0, background: "var(--ink)" }}>
+            <div key={i} className="card-ms" data-testid={`how-card-${i}`} style={{ borderRadius: 0, borderWidth: 0, background: "rgba(15, 17, 24, 0.78)", backdropFilter: "blur(8px)" }}>
               <div className="flex items-center justify-between mb-6 md:mb-8">
                 <span className="glyph">{c.glyph}</span>
                 <span className="text-[10px] tracking-[0.32em] uppercase" style={{ color: "var(--stone)" }}>
@@ -338,7 +341,7 @@ const MapAndPrivacy = () => {
   return (
     <Section id="map" bg="ink-soft" className="fade-in" testid="section-map">
       <div className="absolute inset-0 pointer-events-none" data-testid="fractal-bg-map">
-        <FractalDots variant="cinnabar" density={56} opacity={0.7} />
+        <FractalDots variant="cinnabar" density={120} opacity={0.95} />
       </div>
       <div className="container-ms relative w-full py-24 md:py-32 z-[2]">
         <div className="grid md:grid-cols-12 gap-10 md:gap-12 items-start">
@@ -449,9 +452,11 @@ const Reading = () => {
             {t.reading.lead}
           </p>
         </div>
-        {t.reading.articles.map((a, i) => (
-          <ReadingArticle key={i} article={a} lang={lang} i={i} />
-        ))}
+        <div className="grid md:grid-cols-2 gap-x-10 md:gap-x-14 gap-y-0 md:gap-y-4">
+          {t.reading.articles.map((a, i) => (
+            <ReadingArticle key={i} article={a} lang={lang} i={i} />
+          ))}
+        </div>
       </div>
     </Section>
   );
