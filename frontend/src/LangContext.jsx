@@ -8,8 +8,7 @@ export const LangProvider = ({ children }) => {
     if (typeof window === "undefined") return "ru";
     const stored = window.localStorage.getItem("innercore.lang");
     if (stored === "ru" || stored === "en") return stored;
-    const nav = (navigator.language || "ru").toLowerCase();
-    return nav.startsWith("ru") ? "ru" : "en";
+    return "ru";
   });
 
   useEffect(() => {
