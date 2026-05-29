@@ -1,0 +1,36 @@
+{
+  "summary": "Iteration 5 frontend testing complete. All 14 review-request features verified passing on https://dream-map-2.preview.emergentagent.com. Language toggle (RU/EN) works on desktop and mobile, switches all copy, persists in localStorage 'innercore.lang', active button shows copper background (rgb(184,115,51)). Section background alternation verified via getComputedStyle: hero/tool/reading/finalCTA = ink rgb(15,17,24); manifest/map/faq = ink-soft rgb(22,26,36). Sticky header gets nav-scrolled class with backdrop-filter blur on scroll>24px. Iteration-4 elements still present: 5 nav links, 4 manifesto blocks, 3 tool cards, dream-map + privacy merged, reading-article-0..3, faq-item-0..5, fractal-trees-bg. Mobile (390px) shows hamburger, opens sheet containing LangToggle + 5 nav links + CTA. No console errors during interactions.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "observations": [
+    "Default lang detection uses navigator.language. In Playwright/Chromium default (en-US), first-load default resolved to EN (not RU as worded in the spec). This matches the LangContext code which only forces RU when no localStorage AND navigator.language startsWith('ru'). Real users with RU browsers get RU. If product requires strict RU-first regardless of browser, change LangContext default fallback from navigator-detect to 'ru'.",
+    "EN labels verified: nav = manifesto/tool/map/method/faq; hero H1 = 'Your attention goes anywhere, except to you.'; subtitle = 'innerCore — the place where it returns. A dream journal with Jungian analysis.'; CTA (hero + mobile + final) = 'Open the app'.",
+    "RU restored on toggle back; hero shows 'Твоё внимание уходит куда угодно, кроме тебя.'",
+    "Active button background-color = rgb(184, 115, 51) = #B87333 copper ✓",
+    "localStorage 'innercore.lang' persisted after reload (EN preserved).",
+    "Section backgrounds verified exactly: 4 ink + 3 ink-soft alternation per spec.",
+    "Sticky nav backdrop-filter = blur(14px) saturate(1.4) on scroll>24.",
+    "Mobile sheet: lang-toggle found inside [data-testid='mobile-menu']; clicking lang-en/lang-ru inside sheet switches hero copy correctly.",
+    "Console: 0 errors during full RU↔EN cycling, reloads, scroll, and mobile menu interactions."
+  ],
+  "test_report_links": [],
+  "action_items": [
+    "(Optional) Decide whether default language should be hard-coded RU for first-time visitors regardless of navigator.language, since the review request states 'Default language is RU on first load'. Current implementation uses navigator-based auto-detection."
+  ],
+  "critical_code_review_comments": [
+    "LangContext default falls back to navigator.language; if 'RU-first' is a product requirement, change line 12 to `return 'ru'` instead of nav-based detection.",
+    "App.js is 590 lines — consider splitting Nav/Hero/Manifesto/Tool/Map/Reading/FAQ/FinalCTA/Footer into separate component files for maintainability (>700-line threshold not yet hit, soft recommendation).",
+    "i18n.js is 437 lines of static translations; acceptable, but could be split into per-section JSON files if it keeps growing."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "n/a (skipped)", "frontend": "100%"},
+  "seed_data_creation": "none",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Pure static landing on https://dream-map-2.preview.emergentagent.com. Frontend-only. data-testids: lang-toggle, lang-ru, lang-en, hero-section, section-manifest, section-how, section-map, section-reading, section-faq, section-final-cta, manifest-block-0..3, how-card-0..2, reading-article-0..3, faq-item-0..5, dream-map-demo, block-privacy, fractal-trees-bg, site-nav, mobile-menu, mobile-menu-toggle, m-nav-*, mobile-cta, hero-title, hero-subtitle, hero-cta-open-app, final-cta-open-app. localStorage key: 'innercore.lang'. ink=rgb(15,17,24), ink-soft=rgb(22,26,36), copper=rgb(184,115,51).",
+  "rca of the issue": "n/a — no issues found"
+}
